@@ -1,0 +1,17 @@
+{% if user_data %}
+	<p>Thanks for registering<p>
+{% else %}
+	<form action="" method="post">
+		{% csrf_token %}
+		<label for="user_name">Username</label>
+		<input type="text" name="user_name" />
+		
+		<label for="e_mail">Email (optional)</label>
+		<input type="text" name="e_mail" id="e_mail" />
+		
+		<label for="password">Password</label>
+		<input type="password" name="password" id="password" />
+		
+		<input type="submit" value="Register" />
+	</form>
+{% endif %}

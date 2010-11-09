@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset= utf-8">
+	<title>Wiki</title>
+	
+</head>
+<body>
+	<div id="site_wrapper">
+		<div id="header">
+			<div id="search_bar">
+				<form action = "/wiki/search" method = "get" >			
+					<label for="q">Search: </label><input type = "text" name="q"></input>
+					<input type = "submit" value ="Go"></input>
+				</form>
+			</div>
+		</div>
+		
+		<div id="content">
+			<div id="articleLoader">
+					
+				<h3>WikiArticles</h3>
+				{% if articles %}
+				    <ul>
+				    {% for article in articles %}
+				        <li><a href="/wiki/article/{{ article.title }}/">{{ article.title }}</a></li>
+				    {% endfor %}
+				    </ul>
+				{% else %}
+				    <p>There are no articles.</p>
+				{% endif %}
+				
+
+				{% if users %}
+					Registered users
+					<ul>
+					{% for user in users %}
+						<li>{{ user.user_name }}</li>
+					{% endfor %}
+					</ul>
+				{% else %}
+					<p>There are no registered users<p>
+				{% endif %}
+
+			</div>
+			<hr />
+			<div id="start_article">
+				<div id="body_header">
+					{{ start_article.title }}
+				</div>
+				<hr />
+			<div id="article_body">
+				{% for start_article in start_article.sectionList %} 
+					{% autoescape off %}
+						{{start_article.section_heading}} <br />
+						{{start_article.section_text}}<br />
+					{% endautoescape %}
+				{% endfor %}
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+</body>
+</html>

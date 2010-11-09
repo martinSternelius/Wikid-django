@@ -1,0 +1,11 @@
+{%extends "index.html"%}
+{%block content%}
+	{%if heading%}
+		<h1>{{heading}}</h1>
+	{% endif %}
+	<ul id = "article-list">
+		{%for article in articles%}
+			<li><a href="/wiki/article/{{ article.id }}/">{{ article.title }}</a></li>
+		{%endfor%}
+	</ul>
+{%endblock%}

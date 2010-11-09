@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>view_article</title>
+	
+</head>
+	<body>
+	<div id="page">
+		<div id="header">
+		{{ article.title }}
+		</div>
+		<hr />
+		
+		<div id="body">
+		{% for sec in article.sectionList %} 
+			{% autoescape off %}
+				{{sec.section_heading}} <br />
+				{{sec.section_text}}<br />
+			{% endautoescape %}
+		{% endfor %}
+		</div>
+		
+		<hr />
+		<div id="footer"></div>
+	</div>
+	</body>
+</html>
